@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('GetProject') {
             steps {
-                git branch: 'main', url: 'https://github.com/dalyc117/CT5171_test1Maven.git'
+                git branch: 'main', url: 'https://github.com/dalyc117/conors_petitions.git'
             }
         }
         stage('Build') {
