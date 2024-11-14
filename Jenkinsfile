@@ -26,5 +26,11 @@ pipeline {
                 sh "mvn exec:java"
             }
         }
+
+        stage('Package & Archive'){
+        }
+
+        stage('Deploy'){
+        }
     }
 }
