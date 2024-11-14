@@ -21,9 +21,9 @@ pipeline {
             }
         }
 
-        stage('Exec') {
+        stage('Test') {
             steps {
-                sh "mvn exec:java"
+                sh "mvn test:test"
             }
         }
 
