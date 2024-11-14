@@ -28,9 +28,15 @@ pipeline {
         }
 
         stage('Package & Archive'){
+            steps {
+                echo 'Package'
+            }
         }
 
         stage('Deploy'){
+            steps {
+                echo 'Deploy'
+            }
         }
     }
 }
