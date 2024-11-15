@@ -27,15 +27,22 @@ pipeline {
             }
         }
 
-        stage('Package & Archive'){
+        stage('Package'){
             steps {
-                echo 'Package'
+                sh 'mvn package'
+            }
+        }
+
+        stage('Archive'){
+            steps {
+                archiveArtifacts allowEmptyArchive: true,
+                    artifacts:'**/conors_petitions*.war'
             }
         }
 
         stage('Deploy'){
             steps {
-                echo 'Deploy'
+                sh 'docker build -f Dockerfile -t myapp . '
             }
         }
     }
