@@ -30,11 +30,29 @@
 
 <div class="card bg-info-subtle text-emphasis-primary d-none d-sm-block" style="margin: 15pt">
     <div class="card-body">
-        <h3 id="comments" class="card-title">All Petitions</h3>
+        <h3 id="petitions" class="card-title">All Petitions</h3>
         <div class="card">
             <div class="card-body">
                 <h5 id="userName" class="card-title"></h5>
-                <div  id="userComment" class="card-text"></div>
+                <p><a href="<%= request.getContextPath()%>/listPetitions">listPetitions</a></p>
+                <div  id="userPetitions" class="card-text">
+                    <ul id="testLogs"></ul>
+                    <ul id="myList"></ul>
+                    <script>
+                        let allPetitions = [];
+                        var newdata1 = ["Petition against sheep","dalyc"];
+                        allPetitions.push(newdata1);
+                        let newdata2 = ['Petition for sheep','dalyc'];
+                        allPetitions.push(newdata2);
+
+                        let list = document.getElementById("myList");
+                        for (i = 0; i < allPetitions.length; ++i) {
+                            let li = document.createElement('li');
+                            li.innerText = allPetitions[i];
+                            list.appendChild(li);
+                        }
+                    </script>
+                </div>
             </div>
         </div>
     </div>
