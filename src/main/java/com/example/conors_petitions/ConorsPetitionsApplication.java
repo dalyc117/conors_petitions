@@ -20,7 +20,7 @@ public class ConorsPetitionsApplication {
 
 	@RequestMapping("/test")
 	public String test() {
-		return "This is a very important test";
+		return "This is a very very important test";
 	}
 
 	public static void main(String[] args) {
