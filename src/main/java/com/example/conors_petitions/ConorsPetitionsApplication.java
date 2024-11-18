@@ -18,6 +18,11 @@ public class ConorsPetitionsApplication {
 		return "Hello Again";
 	}
 
+	@RequestMapping("/test")
+	public String test() {
+		return "This is an important test";
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(ConorsPetitionsApplication.class, args);
 	}
