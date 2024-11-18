@@ -15,6 +15,6 @@ public class Petition {
     }
 
     public String toString() {
-        return name + ",/t" + users.length;
+        return name + ",/t" + users.length + "/n";
     }
 }
