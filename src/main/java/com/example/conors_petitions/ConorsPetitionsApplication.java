@@ -34,6 +34,8 @@ public class ConorsPetitionsApplication {
 		String[] users = {"Conor", "Conor2"};
 		Petition petition1 = new Petition("Down With Sheep", users);
 		petitions.add(petition1);
+		Petition petition2 = new Petition("Up With Sheep", users);
+		petitions.add(petition2);
 	}
 
 	public static void main(String[] args) {

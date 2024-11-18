@@ -13,4 +13,8 @@ public class Petition {
         this.name = name;
         this.users = users;
     }
+
+    public String toString() {
+        return name + "\t" + users.length;
+    }
 }
