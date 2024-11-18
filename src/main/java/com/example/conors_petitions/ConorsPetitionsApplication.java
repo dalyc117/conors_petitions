@@ -29,12 +29,14 @@ public class ConorsPetitionsApplication {
 	public String test() {
 		return "This is a very very important test";
 	}
-
 	@PostConstruct
-	public static void main(String[] args) {
+	public void initialise() {
 		String[] users = {"Conor", "Conor2"};
 		Petition petition1 = new Petition("Down With Sheep", users);
 		petitions.add(petition1);
+	}
+
+	public static void main(String[] args) {
 		SpringApplication.run(ConorsPetitionsApplication.class, args);
 	}
 }
