@@ -42,6 +42,8 @@ pipeline {
 
         stage('Deploy'){
             steps {
+                input message: 'Do you want to approve the deployment?', ok: 'Yes'
+                echo "Initiating Deployment"
                 sh 'docker build -f Dockerfile -t myapp . '
                 sh 'docker rm -f "myappcontainer" || true'
                 sh 'docker run --name "myappcontainer" -p 8081:8080 --detach myapp:latest'
