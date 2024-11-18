@@ -1,5 +1,6 @@
 package com.example.conors_petitions;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import java.util.List;
 public class ConorsPetitionsApplication {
 	@RequestMapping("/")
 	public String hello1() {
-		return "<a href=\"\\listPetitions\">Click here to List!</a>";
+		return "<a href=\"/conors_petitions/listPetitions\">Click here to List!</a>";
 	}
 
 	static List<Object> petitions = new ArrayList<>();
@@ -29,6 +30,7 @@ public class ConorsPetitionsApplication {
 		return "This is a very very important test";
 	}
 
+	@PostConstruct
 	public static void main(String[] args) {
 		String[] users = {"Conor", "Conor2"};
 		Petition petition1 = new Petition("Down With Sheep", users);
