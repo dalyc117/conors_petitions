@@ -45,5 +45,10 @@ pipeline {
                 sh 'docker build -f Dockerfile -t myapp . '
             }
         }
+        stage('Run'){
+            steps {
+                sh 'docker run --name "myappcontainer" -p 8081:8080 --detach myapp:latest'
+            }
+        }
     }
 }
