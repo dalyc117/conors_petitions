@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class ConorsPetitionsApplication {
-	@RequestMapping("/")
-	public String hello1() {
-		return "Hello";
-	}
+//	@RequestMapping("/")
+//	public String hello1() {
+//		return "Hello";
+//	}
 
 	@RequestMapping("/hello")
 	public String hello2() {
