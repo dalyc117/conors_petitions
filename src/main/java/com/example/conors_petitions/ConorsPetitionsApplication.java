@@ -12,14 +12,14 @@ import java.util.List;
 @SpringBootApplication
 @RestController
 public class ConorsPetitionsApplication {
-//	@RequestMapping("/")
-//	public String hello1() {
-//		return "Hello";
-//	}
+	@RequestMapping("/")
+	public String hello1() {
+		return "<a href=\"\\listPetitions\">Click here to List!</a>";
+	}
 
 	static List<Object> petitions = new ArrayList<>();
 
-	@RequestMapping(value="/listPetitions",method= RequestMethod.GET)
+	@RequestMapping("/listPetitions")
 	public String listPetitions() {
 		return petitions.toString();
 	}
