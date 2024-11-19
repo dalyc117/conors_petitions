@@ -34,12 +34,13 @@ public class ConorsPetitionsApplication {
 
 	public String displayPetitions(List<Petition> petitionList) {
 		StringBuilder result = new StringBuilder();
+		result.append("<h3>Petition Name&emsp;&emsp;No. of Signatures</h3><br>");
 		for (Petition petition : petitionList) {
             result.append("<a href=\"/conors_petitions/viewPetition?id=");
             result.append(petition.getId());
 			result.append("\">");
 			result.append(petition.getName());
-			result.append("</a>&emsp;");
+			result.append("</a>&emsp;&emsp;&emsp;");
 			result.append(petition.getCount());
 			result.append("<br>");
 		}
