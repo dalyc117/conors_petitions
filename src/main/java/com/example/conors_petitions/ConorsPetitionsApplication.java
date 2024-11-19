@@ -142,13 +142,16 @@ public class ConorsPetitionsApplication {
 	@PostConstruct
 	public void initialise() {
 		List<User> users = new ArrayList<User>();
+		List<User> users2 = new ArrayList<User>();
 		User newUser = new User("Conor","@Conor");
 		users.add(newUser);
+		users2.add(newUser);
 		newUser = new User("John","@John");
 		users.add(newUser);
+		users2.add(newUser);
 		Petition petition1 = new Petition("Down With Sheep", users);
 		petitions.add(petition1);
-		Petition petition2 = new Petition("Up With Sheep", users);
+		Petition petition2 = new Petition("Up With Sheep", users2);
 		petitions.add(petition2);
 	}
 
