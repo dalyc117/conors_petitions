@@ -60,7 +60,7 @@ public class ConorsPetitionsApplication {
 				break;
 			}
 		}
-		return navBar() + "<h3>Petition info: " + displayPetition.getName() + "</h3>&emsp;<h3>" + +displayPetition.getCount() +"</h3>" +  """
+		return navBar() + "<h3>Petition info: " + displayPetition.getName() + "</h3>&emsp;<h3>Number of Signatures: " + +displayPetition.getCount() +"</h3>" +  """
 				<br>
 				<form action="/conors_petitions/signPetition">
 					<label for="user_name">User name:</label><br>
@@ -68,6 +68,11 @@ public class ConorsPetitionsApplication {
 					<label for="user_email">Email:</label><br>
 					<input type="text" id="user_email" name="user_email"><br><br>
 					<input type="submit" value="Sign Petition">
+					<input type="hidden" id="id" name="id" value=
+				"""
+				+id+
+				"""
+				><br><br>
 				</form>
 		""";
 	}
