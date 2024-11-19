@@ -1,8 +1,10 @@
 package com.example.conors_petitions;
 
+import java.util.List;
+
 public class Petition {
     String name;
-    String[] users;
+    List<User> users;
     static int highestId = 0;
     int id;
 
@@ -13,20 +15,25 @@ public class Petition {
         this.id = highestId;
     }
 
-    public Petition(String name, String[] users) {
+    public Petition(String name, List<User> users) {
         this.name = name;
         this.users = users;
         highestId++;
         this.id = highestId;
     }
 
-    public int getCount(){
-        return users.length;
+    public void addUser(User newUsers){
+        users.add(newUsers);
     }
 
-    public String toString() {
-        return name + "  ,  " + users.length;
+    public int getCount(){
+        int countUsers = 0;
+        for (User user : users) {
+            countUsers = countUsers + 1;
+        }
+        return countUsers;
     }
+
     public int getId() {
         return this.id;
     }

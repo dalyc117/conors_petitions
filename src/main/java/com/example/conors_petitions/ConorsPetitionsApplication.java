@@ -65,7 +65,27 @@ public class ConorsPetitionsApplication {
 				break;
 			}
 		}
-		return navBar() + "<h1>Petition info: " + displayPetition + "</h1>";
+		return navBar() + "<h3>Petition info: " + displayPetition + "</h3>" + """
+				<br>
+				<form action="/conors_petitions/signPetition">
+					<label for="user_name">User name:</label><br>
+					<input type="text" id="user_name" name="user_name"><br>
+					<label for="user_email">Email:</label><br>
+					<input type="text" id="user_email" name="user_email"><br><br>
+					<input type="submit" value="Sign Petition">
+				</form>
+		""";
+	}
+
+	@RequestMapping("/signPetition")
+	public String signPetition(@RequestParam int id, @RequestParam String user_name,@RequestParam String user_email) {
+		User newUser = new User(user_name,user_email);
+		for (Petition petition : petitions) {
+			if (petition.getId() == id) {
+				petition.addUser(newUser);
+			}
+		}
+		return navBar() + "Petition Signed";
 	}
 
 	@GetMapping("/createPetitionForm")
@@ -76,15 +96,19 @@ public class ConorsPetitionsApplication {
 					<label for="petition_name">Name of Petition:</label><br>
 					<input type="text" id="petition_name" name="petition_name"><br>
 					<label for="user_name">User name:</label><br>
-					<input type="text" id="user_name" name="user_name"><br><br>
+					<input type="text" id="user_name" name="user_name"><br>
+					<label for="user_email">Email:</label><br>
+					<input type="text" id="user_email" name="user_email"><br><br>
 					<input type="submit" value="Create Petition">
 				</form>
 		""" ;
 	}
 
 	@RequestMapping("/createPetition")
-	public String newPetition(@RequestParam String petition_name, @RequestParam String user_name) {
-		String[] users = {user_name};
+	public String newPetition(@RequestParam String petition_name, @RequestParam String user_name,@RequestParam String user_email) {
+		User newUser = new User(user_name,user_email);
+		List<User> users = new ArrayList<User>();
+		users.add(newUser);
 		Petition petition = new Petition(petition_name, users);
 		petitions.add(petition);
 
@@ -116,7 +140,11 @@ public class ConorsPetitionsApplication {
 
 	@PostConstruct
 	public void initialise() {
-		String[] users = {"Conor", "Conor2"};
+		List<User> users = new ArrayList<User>();
+		User newUser = new User("Conor","@Conor");
+		users.add(newUser);
+		newUser = new User("John","@John");
+		users.add(newUser);
 		Petition petition1 = new Petition("Down With Sheep", users);
 		petitions.add(petition1);
 		Petition petition2 = new Petition("Up With Sheep", users);
