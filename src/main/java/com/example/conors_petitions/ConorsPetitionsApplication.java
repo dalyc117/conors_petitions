@@ -44,9 +44,9 @@ public class ConorsPetitionsApplication {
 
 	@GetMapping("/createPetitionForm")
 	@ResponseBody
-	public String getNew(@RequestParam String id) {
+	public String getNew() {
 		return """
-				<form action="/createPetition">
+				<form action="/conors_petitions/createPetition">
 					<label for="petition_name">Name of Petition:</label><br>
 					<input type="text" id="petition_name" name="petition_name"><br>
 					<label for="user_name">User name:</label><br>
@@ -57,14 +57,10 @@ public class ConorsPetitionsApplication {
 	}
 
 	@RequestMapping("/createPetition")
-	public String newPetition(@RequestParam int id) {
-		Petition displayPetition= null;
-		for (Petition petition : petitions) {
-			if (petition.getId() == id) {
-				displayPetition = petition;
-				break;
-			}
-		}
+	public String newPetition(@RequestParam String petition_name, @RequestParam String user_name) {
+		String[] users = {user_name};
+		Petition petition = new Petition(petition_name, users);
+		petitions.add(petition);
 
 		return "Petition Created";
 	}
@@ -77,9 +73,9 @@ public class ConorsPetitionsApplication {
 	@PostConstruct
 	public void initialise() {
 		String[] users = {"Conor", "Conor2"};
-		Petition petition1 = new Petition("Down With Sheep", users, 1);
+		Petition petition1 = new Petition("Down With Sheep", users);
 		petitions.add(petition1);
-		Petition petition2 = new Petition("Up With Sheep", users, 2);
+		Petition petition2 = new Petition("Up With Sheep", users);
 		petitions.add(petition2);
 	}
 
