@@ -26,6 +26,7 @@ public class ConorsPetitionsApplication {
 				&emsp;
 				<a href="/conors_petitions/listPetitions">Search for Petition</a>
 				<br>
+				<br>
 				""";
 	}
 
@@ -48,7 +49,6 @@ public class ConorsPetitionsApplication {
 				break;
 			}
 		}
-
 		return navBar() + "<h1>Petition info: " + displayPetition + "</h1>";
 	}
 
@@ -73,6 +73,29 @@ public class ConorsPetitionsApplication {
 		petitions.add(petition);
 
 		return navBar() + "Petition Created";
+	}
+
+	@GetMapping("/searchForm")
+	@ResponseBody
+	public String search() {
+		return navBar() + """
+				<form action="/conors_petitions/createPetition">
+					<label for="searchTerm">Search:</label><br>
+					<input type="text" id="searchTerm" name="searchTerm"><br>
+					<input type="submit" value="Search Petitions">
+				</form>
+		""" ;
+	}
+
+	@RequestMapping("/searchResults")
+	public String searchResults(@RequestParam String searchTerm) {
+		List<Petition> searchResults = new ArrayList<>();
+		for (Petition petition : petitions) {
+			if (petition.getName().contains(searchTerm)) {
+				searchResults.add(petition);
+			}
+		}
+		return navBar() + "<h1>Petition info: " + searchResults + "</h1>";
 	}
 
 	@PostConstruct
