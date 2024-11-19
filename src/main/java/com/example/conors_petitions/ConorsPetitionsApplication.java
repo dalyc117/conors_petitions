@@ -30,9 +30,25 @@ public class ConorsPetitionsApplication {
 				""";
 	}
 
+
+
+	public String displayPetitions(List<Petition> petitionList) {
+		StringBuilder result = new StringBuilder();
+		for (Petition petition : petitionList) {
+            result.append("<a href=\"/conors_petitions/viewPetition?id=");
+            result.append(petition.getId());
+			result.append("\">");
+			result.append(petition.getName());
+			result.append("</a>&emsp;");
+			result.append(petition.getCount());
+			result.append("<br>");
+		}
+		return result.toString();
+	}
+
 	@RequestMapping("/listPetitions")
 	public String listPetitions() {
-		return navBar() + petitions.toString();
+		return navBar() + displayPetitions(petitions);
 	}
 
 	@RequestMapping("/test")
@@ -95,7 +111,7 @@ public class ConorsPetitionsApplication {
 				searchResults.add(petition);
 			}
 		}
-		return navBar() + "<h1>Petition info: " + searchResults + "</h1>";
+		return navBar() +  displayPetitions(searchResults);
 	}
 
 	@PostConstruct

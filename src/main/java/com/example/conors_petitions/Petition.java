@@ -20,8 +20,12 @@ public class Petition {
         this.id = highestId;
     }
 
+    public int getCount(){
+        return users.length;
+    }
+
     public String toString() {
-        return name + "  ,  " + users.length + "  ;  " + id;
+        return name + "  ,  " + users.length;
     }
     public int getId() {
         return this.id;
