@@ -3,7 +3,6 @@ package com.example.conors_petitions;
 import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,9 +18,20 @@ public class ConorsPetitionsApplication {
 
 	static List<Petition> petitions = new ArrayList<>();
 
+	public String navBar() {
+		return """
+				<a href="/conors_petitions/listPetitions">List of Petitions</a>
+				&emsp;
+				<a href="/conors_petitions/createPetitionForm">Create New Petition</a>
+				&emsp;
+				<a href="/conors_petitions/listPetitions">Search for Petition</a>
+				<br>
+				""";
+	}
+
 	@RequestMapping("/listPetitions")
 	public String listPetitions() {
-		return petitions.toString();
+		return navBar() + petitions.toString();
 	}
 
 	@RequestMapping("/test")
@@ -39,20 +49,20 @@ public class ConorsPetitionsApplication {
 			}
 		}
 
-		return "<h1>Petition info: " + displayPetition + "</h1>";
+		return navBar() + "<h1>Petition info: " + displayPetition + "</h1>";
 	}
 
 	@GetMapping("/createPetitionForm")
 	@ResponseBody
 	public String getNew() {
-		return """
+		return navBar() + """
 				<form action="/conors_petitions/createPetition">
 					<label for="petition_name">Name of Petition:</label><br>
 					<input type="text" id="petition_name" name="petition_name"><br>
 					<label for="user_name">User name:</label><br>
 					<input type="text" id="user_name" name="user_name"><br><br>
 					<input type="submit" value="Create Petition">
-				</form>\s
+				</form>
 		""" ;
 	}
 
@@ -62,12 +72,7 @@ public class ConorsPetitionsApplication {
 		Petition petition = new Petition(petition_name, users);
 		petitions.add(petition);
 
-		return "Petition Created";
-	}
-
-	@PostMapping("/posting")
-	public String po(@RequestParam("someName") String someName) {
-		return "hello" + someName;
+		return navBar() + "Petition Created";
 	}
 
 	@PostConstruct
