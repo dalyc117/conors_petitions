@@ -60,7 +60,7 @@ public class ConorsPetitionsApplication {
 				break;
 			}
 		}
-		return navBar() + "<h3>Petition info: " + displayPetition.getName() + "</h3>&emsp;<h3>Number of Signatures: " + +displayPetition.getCount() +"</h3>" +  """
+		return navBar() + "<h3>Petition info: " + displayPetition.getName() + " &emsp;Number of Signatures: " + +displayPetition.getCount() +"</h3>" +  """
 				<br>
 				<form action="/conors_petitions/signPetition">
 					<label for="user_name">User name:</label><br>
@@ -83,6 +83,7 @@ public class ConorsPetitionsApplication {
 		for (Petition petition : petitions) {
 			if (petition.getId() == id) {
 				petition.addUser(newUser);
+				break;
 			}
 		}
 		return navBar() + "Petition Signed";
