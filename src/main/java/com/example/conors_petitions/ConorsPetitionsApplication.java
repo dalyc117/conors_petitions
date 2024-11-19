@@ -40,7 +40,7 @@ public class ConorsPetitionsApplication {
             result.append(petition.getId());
 			result.append("\">");
 			result.append(petition.getName());
-			result.append("</a>&emsp;&emsp;&emsp;");
+			result.append("</a>;&emsp; : ;&emsp;");
 			result.append(petition.getCount());
 			result.append("<br>");
 		}
@@ -144,16 +144,33 @@ public class ConorsPetitionsApplication {
 	public void initialise() {
 		List<User> users = new ArrayList<User>();
 		List<User> users2 = new ArrayList<User>();
+		List<User> users3 = new ArrayList<User>();
+		List<User> users4 = new ArrayList<User>();
+		List<User> users5 = new ArrayList<User>();
+		List<User> users6 = new ArrayList<User>();
 		User newUser = new User("Conor","@Conor");
 		users.add(newUser);
 		users2.add(newUser);
+		users4.add(newUser);
+		users6.add(newUser);
 		newUser = new User("John","@John");
 		users.add(newUser);
 		users2.add(newUser);
+		users3.add(newUser);
+		users4.add(newUser);
+		users5.add(newUser);
 		Petition petition1 = new Petition("Down With Sheep", users);
 		petitions.add(petition1);
 		Petition petition2 = new Petition("Up With Sheep", users2);
 		petitions.add(petition2);
+		Petition petition3 = new Petition("Sheep for President", users3);
+		petitions.add(petition3);
+		Petition petition4 = new Petition("Cows Against Sheep", users4);
+		petitions.add(petition4);
+		Petition petition5 = new Petition("Cows against Horses", users5);
+		petitions.add(petition5);
+		Petition petition6 = new Petition("Pigs for all", users6);
+		petitions.add(petition6);
 	}
 
 	public static void main(String[] args) {
