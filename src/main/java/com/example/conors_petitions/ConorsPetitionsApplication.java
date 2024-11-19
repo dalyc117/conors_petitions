@@ -51,7 +51,7 @@ public class ConorsPetitionsApplication {
 		return navBar() + displayPetitions(petitions);
 	}
 
-	@RequestMapping("/viewPetition")
+	@GetMapping("/viewPetition")
 	public String getNew(@RequestParam int id) {
 		Petition displayPetition= null;
 		for (Petition petition : petitions) {
@@ -60,7 +60,7 @@ public class ConorsPetitionsApplication {
 				break;
 			}
 		}
-		return navBar() + "<h3>Petition info: " + displayPetition.getName() +"/t" + displayPetition.getCount() + "</h3>" + """
+		return navBar() + "<h3>Petition info: " + displayPetition.getName() + "</h3>&emsp;<h3>" + +displayPetition.getCount() +"</h3>" +  """
 				<br>
 				<form action="/conors_petitions/signPetition">
 					<label for="user_name">User name:</label><br>
