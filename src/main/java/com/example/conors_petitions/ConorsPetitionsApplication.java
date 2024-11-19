@@ -51,11 +51,6 @@ public class ConorsPetitionsApplication {
 		return navBar() + displayPetitions(petitions);
 	}
 
-	@RequestMapping("/test")
-	public String test() {
-		return "This is a very very important test";
-	}
-
 	@RequestMapping("/viewPetition")
 	public String getNew(@RequestParam int id) {
 		Petition displayPetition= null;
@@ -65,7 +60,7 @@ public class ConorsPetitionsApplication {
 				break;
 			}
 		}
-		return navBar() + "<h3>Petition info: " + displayPetition + "</h3>" + """
+		return navBar() + "<h3>Petition info: " + displayPetition.getName() +"/t" + displayPetition.getCount() + "</h3>" + """
 				<br>
 				<form action="/conors_petitions/signPetition">
 					<label for="user_name">User name:</label><br>
