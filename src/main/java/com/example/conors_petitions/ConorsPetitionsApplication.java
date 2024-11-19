@@ -24,7 +24,7 @@ public class ConorsPetitionsApplication {
 				&emsp;
 				<a href="/conors_petitions/createPetitionForm">Create New Petition</a>
 				&emsp;
-				<a href="/conors_petitions/listPetitions">Search for Petition</a>
+				<a href="/conors_petitions/searchForm">Search for Petition</a>
 				<br>
 				<br>
 				""";
@@ -79,7 +79,7 @@ public class ConorsPetitionsApplication {
 	@ResponseBody
 	public String search() {
 		return navBar() + """
-				<form action="/conors_petitions/createPetition">
+				<form action="/conors_petitions/searchResults">
 					<label for="searchTerm">Search:</label><br>
 					<input type="text" id="searchTerm" name="searchTerm"><br>
 					<input type="submit" value="Search Petitions">
@@ -91,7 +91,7 @@ public class ConorsPetitionsApplication {
 	public String searchResults(@RequestParam String searchTerm) {
 		List<Petition> searchResults = new ArrayList<>();
 		for (Petition petition : petitions) {
-			if (petition.getName().contains(searchTerm)) {
+			if (petition.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
 				searchResults.add(petition);
 			}
 		}
