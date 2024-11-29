@@ -32,7 +32,7 @@ public class ConorsPetitionsApplication {
 
 	public String signatures(Petition petition) {
 		StringBuilder result = new StringBuilder();
-		result.append("<h2>List of Signatures<h2><br>");
+		result.append("<h2>List of Signatures<h2>");
 		for (User user : petition.users){
 			result.append("<p><h4>");
 			result.append(user.getName());
@@ -125,7 +125,7 @@ public class ConorsPetitionsApplication {
 		Petition petition = new Petition(petition_name, users);
 		petitions.add(petition);
 
-		return navBar() + "Petition Created";
+		return navBar() + "Petition Created!";
 	}
 
 	@GetMapping("/searchForm")
