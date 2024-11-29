@@ -86,7 +86,7 @@ public class ConorsPetitionsApplication {
 				"""
 				><br><br>
 				</form>
-		""";
+		><br><br>""" + signatures(displayPetition);
 	}
 
 	@RequestMapping("/signPetition")
