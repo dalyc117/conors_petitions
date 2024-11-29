@@ -40,7 +40,7 @@ public class ConorsPetitionsApplication {
             result.append(petition.getId());
 			result.append("\">");
 			result.append(petition.getName());
-			result.append("</a>;&emsp; : ;&emsp;");
+			result.append("</a>;&emsp; : &emsp;");
 			result.append(petition.getCount());
 			result.append("<br>");
 		}
