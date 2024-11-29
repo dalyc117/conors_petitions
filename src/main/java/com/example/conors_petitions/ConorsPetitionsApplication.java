@@ -87,7 +87,7 @@ public class ConorsPetitionsApplication {
 				break;
 			}
 		}
-		return navBar() + "Petition Signed";
+		return navBar() + "Petition Signed!";
 	}
 
 	@GetMapping("/createPetitionForm")
