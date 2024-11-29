@@ -30,7 +30,18 @@ public class ConorsPetitionsApplication {
 				""";
 	}
 
-
+	public String signatures(Petition petition) {
+		StringBuilder result = new StringBuilder();
+		result.append("<h2>List of Signatures<h2><br><br>");
+		for (User user : petition.users){
+			result.append("<p>");
+			result.append(user.getName());
+			result.append(";&emsp;");
+			result.append(user.getEmail());
+			result.append("</p><br>");
+		}
+	return result.toString();
+	}
 
 	public String displayPetitions(List<Petition> petitionList) {
 		StringBuilder result = new StringBuilder();
